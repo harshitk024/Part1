@@ -19,9 +19,17 @@ const Stat = ({value,info}) => {
 
 const Statistics = (props) => {
 
+
+  if(props.total == 0){
+    return(
+      <>
+      <p>No Feedback Provided</p>
+      </>
+    )
+  }
+
   return (
     <>
-      <h1>Statistics</h1>
       <Stat value = {props.good} info = {"Good"}/>
       <Stat value = {props.neutral} info = {"Neutral"}/>
       <Stat value = {props.bad} info = {"Bad"}/>
@@ -64,6 +72,7 @@ const App = () => {
       <Button onClickHandle = {handleGood} text = {"Good"} />
       <Button onClickHandle = {handleNeutral} text = {"Neutral"} />
       <Button onClickHandle = {handleBad} text = {"Bad"} />
+      <h1>Statistics</h1>
       <Statistics good = {good} neutral = {neutral} bad = {bad} total = {total} />
     </div>
   )
