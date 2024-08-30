@@ -24,15 +24,30 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes,setVote] = useState(Array(anecdotes.length).fill(0))
 
   const nextAnecdote = () => {
     setSelected(selected + 1)
+
+  }
+
+
+  const makeVote = () =>{
+    const copyVotes = [...votes]
+    copyVotes[selected] += 1
+    setVote(copyVotes)
+    console.log("Votes : ",copyVotes);
+    
   }
 
   return (
     <div>
       {anecdotes[selected]}
+      {`has ${votes[selected]} votes`}
+      <div>
+      <Button handleClick = {makeVote} text = {"vote"}></Button>
       <Button handleClick = {nextAnecdote} text = {"next anecdote"} />
+      </div>
     </div>
   )
 }
